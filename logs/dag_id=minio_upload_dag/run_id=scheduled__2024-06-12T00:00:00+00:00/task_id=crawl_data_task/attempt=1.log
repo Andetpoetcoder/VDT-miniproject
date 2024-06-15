@@ -1,0 +1,125 @@
+[2024-06-13T00:36:51.871+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-13T00:36:51.889+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-13T00:36:51.896+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-13T00:36:51.897+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-06-13T00:36:51.907+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_data_task> on 2024-06-12 00:00:00+00:00
+[2024-06-13T00:36:51.919+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'crawl_data_task', 'scheduled__2024-06-12T00:00:00+00:00', '--job-id', '77', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmpzbvccg81']
+[2024-06-13T00:36:51.921+0000] {standard_task_runner.py:91} INFO - Job 77: Subtask crawl_data_task
+[2024-06-13T00:36:51.927+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=6511) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-13T00:36:51.930+0000] {standard_task_runner.py:63} INFO - Started process 6519 to run task
+[2024-06-13T00:36:52.008+0000] {task_command.py:426} INFO - Running <TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [running]> on host 5f6ee5e74cc8
+[2024-06-13T00:36:52.082+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='crawl_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-12T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-12T00:00:00+00:00'
+[2024-06-13T00:36:52.086+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-13T00:36:52.264+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-06-13T00:36:52.266+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-13T00:36:52.280+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=minio_upload_dag, task_id=crawl_data_task, run_id=scheduled__2024-06-12T00:00:00+00:00, execution_date=20240612T000000, start_date=20240613T003651, end_date=20240613T003652
+[2024-06-13T00:36:52.332+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-13T00:36:52.351+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-06-13T00:36:52.353+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-06-13T19:19:41.333+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-13T19:19:41.344+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-13T19:19:41.348+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-13T19:19:41.349+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-06-13T19:19:41.355+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_data_task> on 2024-06-12 00:00:00+00:00
+[2024-06-13T19:19:41.360+0000] {standard_task_runner.py:63} INFO - Started process 215 to run task
+[2024-06-13T19:19:41.363+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'crawl_data_task', 'scheduled__2024-06-12T00:00:00+00:00', '--job-id', '36', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmp_i3bchqr']
+[2024-06-13T19:19:41.364+0000] {standard_task_runner.py:91} INFO - Job 36: Subtask crawl_data_task
+[2024-06-13T19:19:41.402+0000] {task_command.py:426} INFO - Running <TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [running]> on host 40bbaf5cd7cf
+[2024-06-13T19:19:41.472+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='crawl_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-12T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-12T00:00:00+00:00'
+[2024-06-13T19:19:41.473+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-13T19:20:18.104+0000] {logging_mixin.py:188} INFO - Time range is 164 days. Looping through 1 requests
+[2024-06-13T19:20:18.483+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-06-13T19:20:18.490+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-13T19:20:18.508+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=minio_upload_dag, task_id=crawl_data_task, run_id=scheduled__2024-06-12T00:00:00+00:00, execution_date=20240612T000000, start_date=20240613T191941, end_date=20240613T192018
+[2024-06-13T19:20:18.541+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-13T19:20:18.567+0000] {taskinstance.py:3503} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2024-06-13T19:20:18.569+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-06-14T07:37:27.510+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-14T07:37:27.518+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-14T07:37:27.519+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2024-06-14T07:37:27.533+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): crawl_data_task> on 2024-06-12 00:00:00+00:00
+[2024-06-14T07:37:27.541+0000] {standard_task_runner.py:57} INFO - Started process 953 to run task
+[2024-06-14T07:37:27.547+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'crawl_data_task', 'scheduled__2024-06-12T00:00:00+00:00', '--job-id', '42', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmpgezwk061']
+[2024-06-14T07:37:27.550+0000] {standard_task_runner.py:85} INFO - Job 42: Subtask crawl_data_task
+[2024-06-14T07:37:27.627+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [running]> on host 28209c95e1f8
+[2024-06-14T07:37:27.712+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='crawl_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-12T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-12T00:00:00+00:00'
+[2024-06-14T07:41:58.081+0000] {local_task_job_runner.py:115} ERROR - Received SIGTERM. Terminating subprocesses
+[2024-06-14T07:41:58.139+0000] {process_utils.py:131} INFO - Sending 15 to group 953. PIDs of all processes in the group: [953]
+[2024-06-14T07:41:58.145+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 953
+[2024-06-14T07:41:58.153+0000] {taskinstance.py:1630} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-06-14T07:41:58.249+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Upload_minio.py", line 33, in crawl_data
+    CrawlData.get_full_list_stock_price()
+  File "/opt/airflow/code/CrawlData.py", line 31, in get_full_list_stock_price
+    temp_df=pd.DataFrame(stock_historical_data(symbol=company, start_date=current_day(), end_date=current_day(), resolution="1D", type="stock", beautify=True, decor=False, source='DNSE'))
+  File "/home/airflow/.local/lib/python3.9/site-packages/vnstock/technical.py", line 24, in stock_historical_data
+    df = ohlc_data(symbol, start_date, end_date, resolution, type, headers=entrade_headers)
+  File "/home/airflow/.local/lib/python3.9/site-packages/vnstock/technical.py", line 170, in ohlc_data
+    response = requests.request("GET", url, headers=headers)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "/home/airflow/.local/lib/python3.9/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/local/lib/python3.9/ssl.py", line 501, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/local/lib/python3.9/ssl.py", line 1074, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.9/ssl.py", line 1343, in do_handshake
+    self._sslobj.do_handshake()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 1632, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2024-06-14T07:41:58.296+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_upload_dag, task_id=crawl_data_task, execution_date=20240612T000000, start_date=20240614T073727, end_date=20240614T074158
+[2024-06-14T07:41:58.333+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 42 for task crawl_data_task (Task received SIGTERM signal; 953)
+[2024-06-14T07:41:58.350+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=953, status='terminated', exitcode=1, started='07:37:26') (953) terminated with exit code 1
+[2024-06-14T07:41:58.352+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 143
+[2024-06-14T07:41:58.396+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-14T07:57:14.162+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-14T07:57:14.171+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-14T07:57:14.172+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2024-06-14T07:57:14.185+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): crawl_data_task> on 2024-06-12 00:00:00+00:00
+[2024-06-14T07:57:14.233+0000] {standard_task_runner.py:57} INFO - Started process 842 to run task
+[2024-06-14T07:57:14.257+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'crawl_data_task', 'scheduled__2024-06-12T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmp0k_skk5f']
+[2024-06-14T07:57:14.260+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask crawl_data_task
+[2024-06-14T07:57:14.359+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [running]> on host 963b3fbfa4c9
+[2024-06-14T07:57:14.451+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='crawl_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-12T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-12T00:00:00+00:00'
+[2024-06-14T08:02:32.439+0000] {logging_mixin.py:151} INFO - Time range is 165 days. Looping through 1 requests
+[2024-06-14T08:02:32.921+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-06-14T08:02:33.283+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=minio_upload_dag, task_id=crawl_data_task, execution_date=20240612T000000, start_date=20240614T075714, end_date=20240614T080233
+[2024-06-14T08:02:33.392+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-06-14T08:02:33.557+0000] {taskinstance.py:2776} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2024-06-15T12:58:03.034+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-15T12:58:03.047+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-15T12:58:03.049+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2024-06-15T12:58:03.064+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): crawl_data_task> on 2024-06-12 00:00:00+00:00
+[2024-06-15T12:58:03.076+0000] {standard_task_runner.py:57} INFO - Started process 1197 to run task
+[2024-06-15T12:58:03.083+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'crawl_data_task', 'scheduled__2024-06-12T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmptvval5_f']
+[2024-06-15T12:58:03.090+0000] {standard_task_runner.py:85} INFO - Job 3: Subtask crawl_data_task
+[2024-06-15T12:58:03.185+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_upload_dag.crawl_data_task scheduled__2024-06-12T00:00:00+00:00 [running]> on host 3d7c41a4db76
+[2024-06-15T12:58:03.269+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='crawl_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-12T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-12T00:00:00+00:00'
+[2024-06-15T13:03:35.348+0000] {logging_mixin.py:151} INFO - Time range is 166 days. Looping through 1 requests
+[2024-06-15T13:03:35.983+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-06-15T13:03:36.224+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=minio_upload_dag, task_id=crawl_data_task, execution_date=20240612T000000, start_date=20240615T125803, end_date=20240615T130336
+[2024-06-15T13:03:36.507+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-06-15T13:03:36.685+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,122 @@
+[2024-06-14T08:02:36.326+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.upload_file_to_minio_1 scheduled__2024-06-13T00:00:00+00:00 [queued]>
+[2024-06-14T08:02:36.362+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.upload_file_to_minio_1 scheduled__2024-06-13T00:00:00+00:00 [queued]>
+[2024-06-14T08:02:36.367+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2024-06-14T08:02:36.402+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): upload_file_to_minio_1> on 2024-06-13 00:00:00+00:00
+[2024-06-14T08:02:36.461+0000] {standard_task_runner.py:57} INFO - Started process 974 to run task
+[2024-06-14T08:02:36.502+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'upload_file_to_minio_1', 'scheduled__2024-06-13T00:00:00+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmpahjxhsj9']
+[2024-06-14T08:02:36.515+0000] {standard_task_runner.py:85} INFO - Job 14: Subtask upload_file_to_minio_1
+[2024-06-14T08:02:36.850+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_upload_dag.upload_file_to_minio_1 scheduled__2024-06-13T00:00:00+00:00 [running]> on host 963b3fbfa4c9
+[2024-06-14T08:02:37.132+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='upload_file_to_minio_1' AIRFLOW_CTX_EXECUTION_DATE='2024-06-13T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-13T00:00:00+00:00'
+[2024-06-14T08:02:37.190+0000] {base.py:73} INFO - Using connection ID 'minio_s3_connection' for task execution.
+[2024-06-14T08:02:41.502+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Upload_minio.py", line 31, in upload_to_minio
+    hook.load_file(filename=file_path, key=object_name, bucket_name=bucket_name, replace=True)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 138, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 92, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1074, in load_file
+    client.upload_file(filename, bucket_name, key, ExtraArgs=extra_args, Config=self.transfer_config)
+  File "/home/airflow/.local/lib/python3.9/site-packages/boto3/s3/inject.py", line 143, in upload_file
+    return transfer.upload_file(
+  File "/home/airflow/.local/lib/python3.9/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/tasks.py", line 139, in __call__
+    return self._execute_main(kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/tasks.py", line 162, in _execute_main
+    return_value = self._main(**kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/upload.py", line 758, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/client.py", line 535, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/client.py", line 963, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/client.py", line 986, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/endpoint.py", line 198, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/endpoint.py", line 134, in create_request
+    self._event_emitter.emit(
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/signers.py", line 105, in handler
+    return self.sign(operation_name, request)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/signers.py", line 189, in sign
+    auth.add_auth(request)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/auth.py", line 418, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+[2024-06-14T08:02:41.736+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_upload_dag, task_id=upload_file_to_minio_1, execution_date=20240613T000000, start_date=20240614T080236, end_date=20240614T080241
+[2024-06-14T08:02:41.789+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 14 for task upload_file_to_minio_1 (Unable to locate credentials; 974)
+[2024-06-14T08:02:41.858+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-06-14T08:02:41.929+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-15T13:03:52.360+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.upload_file_to_minio_1 scheduled__2024-06-13T00:00:00+00:00 [queued]>
+[2024-06-15T13:03:52.417+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.upload_file_to_minio_1 scheduled__2024-06-13T00:00:00+00:00 [queued]>
+[2024-06-15T13:03:52.421+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2024-06-15T13:03:52.571+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): upload_file_to_minio_1> on 2024-06-13 00:00:00+00:00
+[2024-06-15T13:03:52.740+0000] {standard_task_runner.py:57} INFO - Started process 1447 to run task
+[2024-06-15T13:03:52.782+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'upload_file_to_minio_1', 'scheduled__2024-06-13T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmplod_rh_7']
+[2024-06-15T13:03:52.815+0000] {standard_task_runner.py:85} INFO - Job 10: Subtask upload_file_to_minio_1
+[2024-06-15T13:03:53.892+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_upload_dag.upload_file_to_minio_1 scheduled__2024-06-13T00:00:00+00:00 [running]> on host 3d7c41a4db76
+[2024-06-15T13:04:03.309+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='upload_file_to_minio_1' AIRFLOW_CTX_EXECUTION_DATE='2024-06-13T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-13T00:00:00+00:00'
+[2024-06-15T13:04:03.652+0000] {base.py:73} INFO - Using connection ID 'minio_s3_connection' for task execution.
+[2024-06-15T13:04:03.765+0000] {connection_wrapper.py:340} INFO - AWS Connection (conn_id='minio_s3_connection', conn_type='aws') credentials retrieved from login and password.
+[2024-06-15T13:04:15.084+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/tasks.py", line 139, in __call__
+    return self._execute_main(kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/tasks.py", line 162, in _execute_main
+    return_value = self._main(**kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/upload.py", line 758, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/client.py", line 535, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/client.py", line 980, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidAccessKeyId) when calling the PutObject operation: The AWS Access Key Id you provided does not exist in our records.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Upload_minio.py", line 31, in upload_to_minio
+    hook.load_file(filename=file_path, key=object_name, bucket_name=bucket_name, replace=True)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 138, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 92, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1074, in load_file
+    client.upload_file(filename, bucket_name, key, ExtraArgs=extra_args, Config=self.transfer_config)
+  File "/home/airflow/.local/lib/python3.9/site-packages/boto3/s3/inject.py", line 143, in upload_file
+    return transfer.upload_file(
+  File "/home/airflow/.local/lib/python3.9/site-packages/boto3/s3/transfer.py", line 298, in upload_file
+    raise S3UploadFailedError(
+boto3.exceptions.S3UploadFailedError: Failed to upload /opt/***/data/vnindex.csv to data-lake/vnindex.csv: An error occurred (InvalidAccessKeyId) when calling the PutObject operation: The AWS Access Key Id you provided does not exist in our records.
+[2024-06-15T13:04:17.163+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_upload_dag, task_id=upload_file_to_minio_1, execution_date=20240613T000000, start_date=20240615T130352, end_date=20240615T130417
+[2024-06-15T13:04:17.329+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 10 for task upload_file_to_minio_1 (Failed to upload /opt/***/data/vnindex.csv to data-lake/vnindex.csv: An error occurred (InvalidAccessKeyId) when calling the PutObject operation: The AWS Access Key Id you provided does not exist in our records.; 1447)
+[2024-06-15T13:04:17.560+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-06-15T13:04:17.730+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

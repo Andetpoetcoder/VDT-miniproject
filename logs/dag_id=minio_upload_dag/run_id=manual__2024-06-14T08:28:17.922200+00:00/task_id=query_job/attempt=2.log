@@ -1,0 +1,34 @@
+[2024-06-14T08:30:04.792+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.query_job manual__2024-06-14T08:28:17.922200+00:00 [queued]>
+[2024-06-14T08:30:04.797+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.query_job manual__2024-06-14T08:28:17.922200+00:00 [queued]>
+[2024-06-14T08:30:04.797+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 2
+[2024-06-14T08:30:04.804+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): query_job> on 2024-06-14 08:28:17.922200+00:00
+[2024-06-14T08:30:04.808+0000] {standard_task_runner.py:57} INFO - Started process 1770 to run task
+[2024-06-14T08:30:04.815+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'query_job', 'manual__2024-06-14T08:28:17.922200+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmpzvwztk4s']
+[2024-06-14T08:30:04.818+0000] {standard_task_runner.py:85} INFO - Job 35: Subtask query_job
+[2024-06-14T08:30:04.857+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_upload_dag.query_job manual__2024-06-14T08:28:17.922200+00:00 [running]> on host 963b3fbfa4c9
+[2024-06-14T08:30:04.903+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='query_job' AIRFLOW_CTX_EXECUTION_DATE='2024-06-14T08:28:17.922200+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-14T08:28:17.922200+00:00'
+[2024-06-14T08:30:04.911+0000] {spark_submit.py:271} INFO - Could not load connection string spark-conn, defaulting to yarn
+[2024-06-14T08:30:04.912+0000] {spark_submit.py:401} INFO - Spark-Submit cmd: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --name arrow-spark jobs/python/hudi_spark_minio.py
+[2024-06-14T08:30:05.013+0000] {spark_submit.py:571} INFO - /home/***/.local/lib/python3.9/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2024-06-14T08:30:06.081+0000] {spark_submit.py:571} INFO - Exception in thread "main" org.apache.spark.SparkException: When running with master 'yarn' either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.
+[2024-06-14T08:30:06.084+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.error(SparkSubmitArguments.scala:650)
+[2024-06-14T08:30:06.085+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateSubmitArguments(SparkSubmitArguments.scala:281)
+[2024-06-14T08:30:06.085+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateArguments(SparkSubmitArguments.scala:237)
+[2024-06-14T08:30:06.087+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.<init>(SparkSubmitArguments.scala:122)
+[2024-06-14T08:30:06.088+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2$$anon$3.<init>(SparkSubmit.scala:1094)
+[2024-06-14T08:30:06.088+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.parseArguments(SparkSubmit.scala:1094)
+[2024-06-14T08:30:06.090+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+[2024-06-14T08:30:06.091+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1111)
+[2024-06-14T08:30:06.091+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1120)
+[2024-06-14T08:30:06.092+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2024-06-14T08:30:06.114+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 502, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --name arrow-spark jobs/python/hudi_spark_minio.py. Error code is: 1.
+[2024-06-14T08:30:06.120+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=minio_upload_dag, task_id=query_job, execution_date=20240614T082817, start_date=20240614T083004, end_date=20240614T083006
+[2024-06-14T08:30:06.129+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 35 for task query_job (Cannot execute: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --name arrow-spark jobs/python/hudi_spark_minio.py. Error code is: 1.; 1770)
+[2024-06-14T08:30:06.147+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-06-14T08:30:06.170+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

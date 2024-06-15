@@ -1,0 +1,34 @@
+[2024-06-15T13:39:23.807+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task manual__2024-06-15T13:39:07.783635+00:00 [queued]>
+[2024-06-15T13:39:23.824+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task manual__2024-06-15T13:39:07.783635+00:00 [queued]>
+[2024-06-15T13:39:23.826+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2024-06-15T13:39:23.890+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): crawl_data_task> on 2024-06-15 13:39:07.783635+00:00
+[2024-06-15T13:39:24.071+0000] {standard_task_runner.py:57} INFO - Started process 3026 to run task
+[2024-06-15T13:39:24.124+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'crawl_data_task', 'manual__2024-06-15T13:39:07.783635+00:00', '--job-id', '70', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmpy2gahgc8']
+[2024-06-15T13:39:24.180+0000] {standard_task_runner.py:85} INFO - Job 70: Subtask crawl_data_task
+[2024-06-15T13:39:25.364+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_upload_dag.crawl_data_task manual__2024-06-15T13:39:07.783635+00:00 [running]> on host 3d7c41a4db76
+[2024-06-15T13:39:30.268+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='crawl_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-15T13:39:07.783635+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-15T13:39:07.783635+00:00'
+[2024-06-15T13:44:57.021+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Upload_minio.py", line 33, in crawl_data
+    CrawlData.get_full_list_stock_price()
+  File "/opt/airflow/code/CrawlData.py", line 33, in get_full_list_stock_price
+    df_combined.to_csv(".opt/airflow/data/allstockprice.csv",index=False,header=False)
+  File "/home/airflow/.local/lib/python3.9/site-packages/pandas/core/generic.py", line 3902, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+  File "/home/airflow/.local/lib/python3.9/site-packages/pandas/io/formats/format.py", line 1152, in to_csv
+    csv_formatter.save()
+  File "/home/airflow/.local/lib/python3.9/site-packages/pandas/io/formats/csvs.py", line 247, in save
+    with get_handle(
+  File "/home/airflow/.local/lib/python3.9/site-packages/pandas/io/common.py", line 739, in get_handle
+    check_parent_directory(str(handle))
+  File "/home/airflow/.local/lib/python3.9/site-packages/pandas/io/common.py", line 604, in check_parent_directory
+    raise OSError(rf"Cannot save file into a non-existent directory: '{parent}'")
+OSError: Cannot save file into a non-existent directory: '.opt/***/data'
+[2024-06-15T13:44:57.175+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_upload_dag, task_id=crawl_data_task, execution_date=20240615T133907, start_date=20240615T133923, end_date=20240615T134457
+[2024-06-15T13:44:57.224+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 70 for task crawl_data_task (Cannot save file into a non-existent directory: '.opt/***/data'; 3026)
+[2024-06-15T13:44:57.356+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-06-15T13:44:57.432+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,38 @@
+[2024-06-13T19:55:51.041+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-13T19:55:51.052+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.query_job manual__2024-06-13T19:55:06.795322+00:00 [queued]>
+[2024-06-13T19:55:51.059+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.query_job manual__2024-06-13T19:55:06.795322+00:00 [queued]>
+[2024-06-13T19:55:51.060+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-06-13T19:55:51.068+0000] {taskinstance.py:2330} INFO - Executing <Task(SparkSubmitOperator): query_job> on 2024-06-13 19:55:06.795322+00:00
+[2024-06-13T19:55:51.080+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'query_job', 'manual__2024-06-13T19:55:06.795322+00:00', '--job-id', '155', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmpd298ng30']
+[2024-06-13T19:55:51.083+0000] {standard_task_runner.py:91} INFO - Job 155: Subtask query_job
+[2024-06-13T19:55:51.084+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=240) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-13T19:55:51.085+0000] {standard_task_runner.py:63} INFO - Started process 242 to run task
+[2024-06-13T19:55:51.123+0000] {task_command.py:426} INFO - Running <TaskInstance: minio_upload_dag.query_job manual__2024-06-13T19:55:06.795322+00:00 [running]> on host fba111c28c36
+[2024-06-13T19:55:51.187+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='query_job' AIRFLOW_CTX_EXECUTION_DATE='2024-06-13T19:55:06.795322+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-13T19:55:06.795322+00:00'
+[2024-06-13T19:55:51.191+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-13T19:55:51.218+0000] {spark_submit.py:271} INFO - Could not load connection string spark-conn, defaulting to yarn
+[2024-06-13T19:55:51.222+0000] {spark_submit.py:401} INFO - Spark-Submit cmd: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --packages org.apache.hudi:hudi-spark3.4-bundle_2.12:0.14.0,org.apache.hadoop:hadoop-aws:3.3.2 --name arrow-spark jobs/python/hudi_spark_minio.py
+[2024-06-13T19:55:51.310+0000] {spark_submit.py:571} INFO - /home/***/.local/lib/python3.12/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2024-06-13T19:55:51.312+0000] {spark_submit.py:571} INFO - JAVA_HOME is not set
+[2024-06-13T19:55:51.314+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-13T19:55:51.321+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 502, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --packages org.apache.hudi:hudi-spark3.4-bundle_2.12:0.14.0,org.apache.hadoop:hadoop-aws:3.3.2 --name arrow-spark jobs/python/hudi_spark_minio.py. Error code is: 1.
+[2024-06-13T19:55:51.326+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_upload_dag, task_id=query_job, run_id=manual__2024-06-13T19:55:06.795322+00:00, execution_date=20240613T195506, start_date=20240613T195551, end_date=20240613T195551
+[2024-06-13T19:55:51.334+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 155 for task query_job (Cannot execute: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --packages org.apache.hudi:hudi-spark3.4-bundle_2.12:0.14.0,org.apache.hadoop:hadoop-aws:3.3.2 --name arrow-spark jobs/python/hudi_spark_minio.py. Error code is: 1.; 242)
+[2024-06-13T19:55:51.350+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-13T19:55:51.360+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-13T19:55:51.361+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

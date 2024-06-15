@@ -1,0 +1,34 @@
+[2024-06-15T13:57:02.669+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: simple_spark_dag.spark_submit_task manual__2024-06-15T13:56:58.136528+00:00 [queued]>
+[2024-06-15T13:57:02.681+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: simple_spark_dag.spark_submit_task manual__2024-06-15T13:56:58.136528+00:00 [queued]>
+[2024-06-15T13:57:02.682+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2024-06-15T13:57:02.694+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): spark_submit_task> on 2024-06-15 13:56:58.136528+00:00
+[2024-06-15T13:57:02.708+0000] {standard_task_runner.py:57} INFO - Started process 3792 to run task
+[2024-06-15T13:57:02.751+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'simple_spark_dag', 'spark_submit_task', 'manual__2024-06-15T13:56:58.136528+00:00', '--job-id', '82', '--raw', '--subdir', 'DAGS_FOLDER/simple_spark_dag.py', '--cfg-path', '/tmp/tmpdki22nrf']
+[2024-06-15T13:57:02.800+0000] {standard_task_runner.py:85} INFO - Job 82: Subtask spark_submit_task
+[2024-06-15T13:57:03.694+0000] {task_command.py:415} INFO - Running <TaskInstance: simple_spark_dag.spark_submit_task manual__2024-06-15T13:56:58.136528+00:00 [running]> on host 3d7c41a4db76
+[2024-06-15T13:57:04.033+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='simple_spark_dag' AIRFLOW_CTX_TASK_ID='spark_submit_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-15T13:56:58.136528+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-15T13:56:58.136528+00:00'
+[2024-06-15T13:57:04.095+0000] {spark_submit.py:271} INFO - Could not load connection string Spark_connection, defaulting to yarn
+[2024-06-15T13:57:04.102+0000] {spark_submit.py:401} INFO - Spark-Submit cmd: spark-submit --master yarn --conf spark.hadoop.fs.s3a.endpoint=http://host.docker.internal:9000 --conf spark.hadoop.fs.s3a.access.key=khaiVDT2024 --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --name spark_minio_job jobs/python/test2.py
+[2024-06-15T13:57:05.267+0000] {spark_submit.py:571} INFO - /home/***/.local/lib/python3.9/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2024-06-15T13:57:14.067+0000] {spark_submit.py:571} INFO - Exception in thread "main" org.apache.spark.SparkException: When running with master 'yarn' either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.
+[2024-06-15T13:57:14.110+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.error(SparkSubmitArguments.scala:650)
+[2024-06-15T13:57:14.111+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateSubmitArguments(SparkSubmitArguments.scala:281)
+[2024-06-15T13:57:14.119+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateArguments(SparkSubmitArguments.scala:237)
+[2024-06-15T13:57:14.120+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.<init>(SparkSubmitArguments.scala:122)
+[2024-06-15T13:57:14.122+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2$$anon$3.<init>(SparkSubmit.scala:1094)
+[2024-06-15T13:57:14.123+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.parseArguments(SparkSubmit.scala:1094)
+[2024-06-15T13:57:14.124+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+[2024-06-15T13:57:14.125+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1111)
+[2024-06-15T13:57:14.125+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1120)
+[2024-06-15T13:57:14.128+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2024-06-15T13:57:14.217+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 502, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --conf spark.hadoop.fs.s3a.endpoint=http://host.docker.internal:9000 --conf spark.hadoop.fs.s3a.access.key=khaiVDT2024 --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --name spark_minio_job jobs/python/test2.py. Error code is: 1.
+[2024-06-15T13:57:14.279+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=simple_spark_dag, task_id=spark_submit_task, execution_date=20240615T135658, start_date=20240615T135702, end_date=20240615T135714
+[2024-06-15T13:57:14.352+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 82 for task spark_submit_task (Cannot execute: spark-submit --master yarn --conf spark.hadoop.fs.s3a.endpoint=http://host.docker.internal:9000 --conf spark.hadoop.fs.s3a.access.key=khaiVDT2024 --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --name spark_minio_job jobs/python/test2.py. Error code is: 1.; 3792)
+[2024-06-15T13:57:14.431+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-06-15T13:57:14.535+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

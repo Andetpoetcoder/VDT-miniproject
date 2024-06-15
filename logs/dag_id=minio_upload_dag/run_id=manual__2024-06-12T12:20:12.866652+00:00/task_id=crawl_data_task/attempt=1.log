@@ -1,0 +1,53 @@
+[2024-06-12T12:20:16.290+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-12T12:20:16.319+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task manual__2024-06-12T12:20:12.866652+00:00 [queued]>
+[2024-06-12T12:20:16.332+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_upload_dag.crawl_data_task manual__2024-06-12T12:20:12.866652+00:00 [queued]>
+[2024-06-12T12:20:16.334+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-06-12T12:20:16.361+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_data_task> on 2024-06-12 12:20:12.866652+00:00
+[2024-06-12T12:20:16.394+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'minio_upload_dag', 'crawl_data_task', 'manual__2024-06-12T12:20:12.866652+00:00', '--job-id', '72', '--raw', '--subdir', 'DAGS_FOLDER/Upload_minio.py', '--cfg-path', '/tmp/tmp9bqoa3_k']
+[2024-06-12T12:20:16.401+0000] {standard_task_runner.py:91} INFO - Job 72: Subtask crawl_data_task
+[2024-06-12T12:20:16.400+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=337) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-12T12:20:16.407+0000] {standard_task_runner.py:63} INFO - Started process 339 to run task
+[2024-06-12T12:20:16.482+0000] {task_command.py:426} INFO - Running <TaskInstance: minio_upload_dag.crawl_data_task manual__2024-06-12T12:20:12.866652+00:00 [running]> on host 5f6ee5e74cc8
+[2024-06-12T12:20:16.579+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_upload_dag' AIRFLOW_CTX_TASK_ID='crawl_data_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-12T12:20:12.866652+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-12T12:20:12.866652+00:00'
+[2024-06-12T12:20:16.580+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-12T12:20:16.629+0000] {logging_mixin.py:188} INFO - Crawl_data
+[2024-06-12T12:20:16.979+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-12T12:20:16.981+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/Upload_minio.py", line 33, in crawl_data
+    CrawlData.get_stock_data("HPG")
+  File "/opt/airflow/code/CrawlData.py", line 18, in get_stock_data
+    df.to_csv('opt/airflow/data/stockprice.csv', index=False)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 3902, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1152, in to_csv
+    csv_formatter.save()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 247, in save
+    with get_handle(
+         ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/common.py", line 739, in get_handle
+    check_parent_directory(str(handle))
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/common.py", line 604, in check_parent_directory
+    raise OSError(rf"Cannot save file into a non-existent directory: '{parent}'")
+OSError: Cannot save file into a non-existent directory: 'opt/***/data'
+[2024-06-12T12:20:17.018+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_upload_dag, task_id=crawl_data_task, run_id=manual__2024-06-12T12:20:12.866652+00:00, execution_date=20240612T122012, start_date=20240612T122016, end_date=20240612T122017
+[2024-06-12T12:20:17.030+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 72 for task crawl_data_task (Cannot save file into a non-existent directory: 'opt/***/data'; 339)
+[2024-06-12T12:20:17.064+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-12T12:20:17.109+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-12T12:20:17.112+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

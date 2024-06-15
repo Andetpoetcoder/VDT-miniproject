@@ -1,0 +1,50 @@
+[2024-06-13T00:36:50.469+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-13T00:36:50.483+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: StockETL_v01.sensor_minio_s3 scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-13T00:36:50.494+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: StockETL_v01.sensor_minio_s3 scheduled__2024-06-12T00:00:00+00:00 [queued]>
+[2024-06-13T00:36:50.495+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 6
+[2024-06-13T00:36:50.512+0000] {taskinstance.py:2330} INFO - Executing <Task(S3KeySensor): sensor_minio_s3> on 2024-06-12 00:00:00+00:00
+[2024-06-13T00:36:50.527+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'StockETL_v01', 'sensor_minio_s3', 'scheduled__2024-06-12T00:00:00+00:00', '--job-id', '76', '--raw', '--subdir', 'DAGS_FOLDER/StockETL_dag.py', '--cfg-path', '/tmp/tmpel6gi07m']
+[2024-06-13T00:36:50.538+0000] {standard_task_runner.py:91} INFO - Job 76: Subtask sensor_minio_s3
+[2024-06-13T00:36:50.552+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=6510) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-06-13T00:36:50.556+0000] {standard_task_runner.py:63} INFO - Started process 6516 to run task
+[2024-06-13T00:36:50.720+0000] {task_command.py:426} INFO - Running <TaskInstance: StockETL_v01.sensor_minio_s3 scheduled__2024-06-12T00:00:00+00:00 [running]> on host 5f6ee5e74cc8
+[2024-06-13T00:36:50.867+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='chauminhkhai' AIRFLOW_CTX_DAG_ID='StockETL_v01' AIRFLOW_CTX_TASK_ID='sensor_minio_s3' AIRFLOW_CTX_EXECUTION_DATE='2024-06-12T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-12T00:00:00+00:00'
+[2024-06-13T00:36:50.869+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-13T00:36:50.899+0000] {baseoperator.py:400} WARNING - S3KeySensor.execute cannot be called outside TaskInstance!
+[2024-06-13T00:36:50.901+0000] {s3.py:117} INFO - Poking for key : s3://vietnam-stock-data/stocprice.csv
+[2024-06-13T00:36:50.916+0000] {base.py:84} INFO - Using connection ID 'minio_s3_connection' for task execution.
+[2024-06-13T00:36:50.917+0000] {connection_wrapper.py:384} INFO - AWS Connection (conn_id='minio_s3_connection', conn_type='aws') credentials retrieved from login and password.
+[2024-06-13T03:23:37.820+0000] {s3.py:117} INFO - Poking for key : s3://vietnam-stock-data/stocprice.csv
+[2024-06-13T06:09:44.872+0000] {s3.py:117} INFO - Poking for key : s3://vietnam-stock-data/stocprice.csv
+[2024-06-13T07:16:55.057+0000] {s3.py:117} INFO - Poking for key : s3://vietnam-stock-data/stocprice.csv
+[2024-06-13T07:20:00.996+0000] {s3.py:117} INFO - Poking for key : s3://vietnam-stock-data/stocprice.csv
+[2024-06-13T07:22:58.584+0000] {s3.py:117} INFO - Poking for key : s3://vietnam-stock-data/stocprice.csv
+[2024-06-13T07:33:07.535+0000] {local_task_job_runner.py:214} ERROR - Heartbeat time limit exceeded!
+[2024-06-13T07:33:07.554+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-06-13T07:33:07.566+0000] {process_utils.py:132} INFO - Sending 15 to group 6516. PIDs of all processes in the group: [6516]
+[2024-06-13T07:33:07.567+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 6516
+[2024-06-13T07:33:07.571+0000] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-06-13T07:33:07.586+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-13T07:33:07.633+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/sensors/s3.py", line 183, in execute
+    super().execute(context)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/base.py", line 292, in execute
+    time.sleep(self._get_next_poke_interval(started_at, run_duration, try_number))
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2613, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2024-06-13T07:33:07.655+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=StockETL_v01, task_id=sensor_minio_s3, run_id=scheduled__2024-06-12T00:00:00+00:00, execution_date=20240612T000000, start_date=20240613T003650, end_date=20240613T073307
+[2024-06-13T07:33:07.800+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=6516, status='terminated', exitcode=2, started='00:36:49') (6516) terminated with exit code 2

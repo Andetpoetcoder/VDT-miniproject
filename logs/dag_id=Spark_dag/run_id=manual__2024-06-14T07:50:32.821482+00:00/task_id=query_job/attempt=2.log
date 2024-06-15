@@ -1,0 +1,34 @@
+[2024-06-14T07:51:45.691+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Spark_dag.query_job manual__2024-06-14T07:50:32.821482+00:00 [queued]>
+[2024-06-14T07:51:45.701+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Spark_dag.query_job manual__2024-06-14T07:50:32.821482+00:00 [queued]>
+[2024-06-14T07:51:45.706+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 2
+[2024-06-14T07:51:45.724+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): query_job> on 2024-06-14 07:50:32.821482+00:00
+[2024-06-14T07:51:45.749+0000] {standard_task_runner.py:57} INFO - Started process 404 to run task
+[2024-06-14T07:51:45.767+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Spark_dag', 'query_job', 'manual__2024-06-14T07:50:32.821482+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/Spark_dag.py', '--cfg-path', '/tmp/tmp62eyj2ou']
+[2024-06-14T07:51:45.772+0000] {standard_task_runner.py:85} INFO - Job 7: Subtask query_job
+[2024-06-14T07:51:45.915+0000] {task_command.py:415} INFO - Running <TaskInstance: Spark_dag.query_job manual__2024-06-14T07:50:32.821482+00:00 [running]> on host 963b3fbfa4c9
+[2024-06-14T07:51:46.060+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Spark_dag' AIRFLOW_CTX_TASK_ID='query_job' AIRFLOW_CTX_EXECUTION_DATE='2024-06-14T07:50:32.821482+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-14T07:50:32.821482+00:00'
+[2024-06-14T07:51:46.077+0000] {spark_submit.py:271} INFO - Could not load connection string Spark_connection, defaulting to yarn
+[2024-06-14T07:51:46.080+0000] {spark_submit.py:401} INFO - Spark-Submit cmd: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --name arrow-spark jobs/python/pyspark_test.py
+[2024-06-14T07:51:46.358+0000] {spark_submit.py:571} INFO - /home/***/.local/lib/python3.9/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2024-06-14T07:51:50.602+0000] {spark_submit.py:571} INFO - Exception in thread "main" org.apache.spark.SparkException: When running with master 'yarn' either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.
+[2024-06-14T07:51:50.636+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.error(SparkSubmitArguments.scala:650)
+[2024-06-14T07:51:50.649+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateSubmitArguments(SparkSubmitArguments.scala:281)
+[2024-06-14T07:51:50.652+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateArguments(SparkSubmitArguments.scala:237)
+[2024-06-14T07:51:50.653+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmitArguments.<init>(SparkSubmitArguments.scala:122)
+[2024-06-14T07:51:50.656+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2$$anon$3.<init>(SparkSubmit.scala:1094)
+[2024-06-14T07:51:50.656+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.parseArguments(SparkSubmit.scala:1094)
+[2024-06-14T07:51:50.659+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+[2024-06-14T07:51:50.660+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1111)
+[2024-06-14T07:51:50.660+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1120)
+[2024-06-14T07:51:50.664+0000] {spark_submit.py:571} INFO - at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2024-06-14T07:51:50.768+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 174, in execute
+    self._hook.submit(self.application)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 502, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --name arrow-spark jobs/python/pyspark_test.py. Error code is: 1.
+[2024-06-14T07:51:50.811+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=Spark_dag, task_id=query_job, execution_date=20240614T075032, start_date=20240614T075145, end_date=20240614T075150
+[2024-06-14T07:51:50.862+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 7 for task query_job (Cannot execute: spark-submit --master yarn --conf spark.driver.memory=1g --conf spark.executor.memory=1g --conf spark.executor.instances=1 --name arrow-spark jobs/python/pyspark_test.py. Error code is: 1.; 404)
+[2024-06-14T07:51:50.899+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-06-14T07:51:50.938+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
